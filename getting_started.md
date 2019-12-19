@@ -7,15 +7,22 @@
 There are several ways how to get hold of CppUTest on your computer.
 For details see the [homepage of CppUTest](http://cpputest.github.io).
 Although it is possible to use a pre-packaged system-wide installation,
-You should prefer the source install:
+You should prefer the source install (make sure, `automake` and 
+`autoconf` are installed):
 
     cd <your path to external libraries>
-    git clone git://github.com/cpputest/cpputest.git
-    cd cpputest
+    
+    # As mentioned in the CSlim README.md, CSlim and CppUTest must have
+    # the same parent directory and the directory must be CppUTest 
+    # (case-sensitive!)
+    git clone git://github.com/cpputest/cpputest.git CppUTest
+    
+    cd CppUTest
     git checkout <tag of latest release version>
-    cmake CMakeLists.txt -D"CMAKE_INSTALL_PREFIX=~/MyLibs/cpputest"
+    ./autogen.sh
+    mkdir a_build_dir && cd a_build_dir
+    ../configure
     make
-    make install
 
 The built library will be in `~/MyLibs/cpputest`.
 
